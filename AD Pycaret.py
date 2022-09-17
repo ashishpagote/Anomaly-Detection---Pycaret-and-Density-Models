@@ -19,6 +19,8 @@ import seaborn as sns
 import pytz
 import os
 import math 
+from sklearn.neighbors import KernelDensity
+import gc
 
 
 
@@ -64,8 +66,6 @@ def predict_probability(db,train_time,metric_list,time_col):
 
 
 
-from sklearn.neighbors import KernelDensity
-import gc
 
 
 ######PYCARET ANOMALY DETECTION MODELS ########
@@ -94,9 +94,6 @@ def anomaly_models(df,model_list,metric,time_col,train_time):
         model_results.rename(columns={'Anomaly':'Anomaly_'+i,'Anomaly_Score':'Anomaly_Score_'+i},inplace=True)
         model_db=model_db.merge(model_results,on=[time_col])
     return model_db
-
-from sklearn.neighbors import KernelDensity
-import gc
 
 
 
